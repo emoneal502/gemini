@@ -1,0 +1,26 @@
+<style>
+body {
+    background-color: cadetblue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#main {
+    width: 80%;
+    max-width: 950px;
+    border: 1px salmon dotted;
+    margin: auto;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#header {
+    margin-top: 0;
+    border: 2px solid black;
+    padding: 5px;
+    height: 250px;
+    background: beige;
+    background-image: url("shouting.jpg") ;
+}
+
+</style>
