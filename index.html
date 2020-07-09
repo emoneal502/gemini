@@ -1,14 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head> 
-    <link rel="stylesheet" type="text/css" href="/html/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Which Tom Cruise Are You?</title>
 </head>
+
 <body>
-    <h1>Which of the many faces of Tom Cruise are you?</h1>
-    <p>How would you describe yourself?</p>
-    <p>What excites you the most?</p>
-    <p>1 being the lowest and 4 being the highest, how angry are you right now?</p>
-    <p>Where would you rather be?</p>
+<!--QUIZ Q&A-->
+    <div class="quiz-container">
+        <h1>Which of Tom Cruise's Faces Are You?</h1>
+        <div id="question" class="question"></div>
+        <label class=:option">
+            <input type="radio" name="option" value="1"/>
+            <span class="option1"></span>
+        </label>
+        <label class=:option">
+            <input type="radio" name="option" value="2"/>
+            <span class="option2"></span>
+        </label>
+        <label class=:option">
+            <input type="radio" name="option" value="3"/>
+            <span class="option3"></span>
+        </label>
+        <label class=:option">
+            <input type="radio" name="option" value="4"/>
+            <span class="option4"></span>
+        </label>
+<!--BOTTOM BUTTONS-->
+        <div class="controls">
+            <button class="previous">Previous Question</button>
+            <button class="next">Next Question</button>
+        </div>
+
+        <div class="results"></div>
+    </div>
+    <script type="text/javascript" src="scripts.js"></script>
 </body>
 
 </html>
+
