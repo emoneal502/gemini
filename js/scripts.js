@@ -50,10 +50,10 @@ var question = [
 
 //Variables
 
-let currentQuestion = 0;
+const currentQuestion = 0;
 let score = [];
 let selectedAnswersData = [];
-const totalQuestions = questions.length;
+const totalQuestions = question.length;
 
 const container = document.querySelector('.quiz-container');
 const questionEl = document.querySelector('.question');
@@ -65,13 +65,13 @@ const nextButton = document.querySelector('.previous');
 const restartButton = document.querySelector('.restart');
 
 //Question Generator 
-function generateQuestions (index) {
+function generateQuestions (index, questionArray) {
     //Selecting each question to pass it to a particular index
-    const question = queston[index];
-    const option1Total = question[index].answer1Total;
-    const option2Total = question[index].answer2Total;
-    const option3Total = question[index].answer3Total;
-    const option4Total = question[index].answer4Total;
+    const currentQuestion = questionArray[index];
+    const option1Total = currentQuestion[index].answer1Total;
+    const option2Total = currentQuestion[index].answer2Total;
+    const option3Total = currentQuestion[index].answer3Total;
+    const option4Total = currentQuestion[index].answer4Total;
 //HTML Elements
     questionEl.innerHTML = '${index + 1}. ${question.question}'
     option1.setAttribute('data-total', '${option1Total}');
@@ -79,10 +79,10 @@ function generateQuestions (index) {
     option3.setAttribute('data-total', '${option3Total}');
     option4.setAttribute('data-total', '${option4Total}');
 
-    option1.innerHTML = '${question.answer1}'
-    option2.innerHTML = '${question.answer2}'
-    option3.innerHTML = '${question.answer3}'
-    option4.innerHTML = '${question.answer4}'
+    option1.innerHTML = `${question.answer1}`
+    option2.innerHTML = `${question.answer2}`
+    option3.innerHTML = `${question.answer3}`
+    option4.innerHTML = `${question.answer4}`
 }
 
 //Next Question
@@ -114,7 +114,7 @@ function loadNextQuestion () {
     if(currentQuestion == totalQuestions) {
         container.style.display = 'none';
         result.innerHTML = 
-            '<h1 class="final-score"> Your score: ${totalScore}</h1>
+            `<h1 class="final-score"> Your score: ${totalScore}</h1>
             <div class="summary">
                 <h1>Summary</h1>
                 <p>Possible personality traits, see below for a summary based on your results:</p>
@@ -123,11 +123,11 @@ function loadNextQuestion () {
                 <p>5-9 - Screaming</p>
                 <p>1-4 - Risky Business</p>
             </div>
-            <button class="restart">Restart</button>
-            ';
+            <button class="restart">Restart</button>`
         return;
     }
-    generateQuestions(currentQuestion);
+    console.log(question);
+    generateQuestions(currentQuestion, question);
 }
 
 //Function to load previous question
@@ -146,7 +146,7 @@ function restartQuiz(e) {
     }
 }
 
-generateQuestions(currentQuestion);
+generateQuestions(currentQuestion, question);
 nextButton.addEventListener('click', loadNextQuestion);
 previousButton.addEventListener('click', loadPreviousQuestion);
 result.addEventListener('click', restartQuiz);
