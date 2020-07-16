@@ -2,20 +2,29 @@
 <html lang="en">
 
 <head> 
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script type="text/javascript" src="scripts.js"></script>
     <title>Which Tom Cruise Are You?</title>
 </head>
 
 <body>
-<!--QUIZ Q&A-->
-    <div class="quiz-container">
+    <!--Headers-->
+     <div class="header"> 
+        <img src="img/eyes1.jpg" alt="Toms Eyes" style="width:100%">
         <h1>Which of Tom Cruise's Faces Are You?</h1>
+    </div>  
+    <div id="intro">
+        <h2>Take this quiz to find out which of Tom Cruise's ridiculous facial expression best matches your personality!</h2>
+    </div>
+
+        <!--QUIZ Q&A-->
+     <div class="quiz-container">
         <div id="question" class="question"></div>
         <label class=:option">
             <input type="radio" name="option" value="1"/>
             <span class="option1"></span>
         </label>
-        <label class=:option">
+        <label class="option">
             <input type="radio" name="option" value="2"/>
             <span class="option2"></span>
         </label>
@@ -35,7 +44,6 @@
 
         <div class="results"></div>
     </div>
-    <script type="text/javascript" src="scripts.js"></script>
 </body>
 
 </html>

@@ -66,11 +66,87 @@ const restartButton = document.querySelector('.restart');
 
 //Question Generator 
 function generateQuestions (index) {
+    //Selecting each question to pass it to a particular index
     const question = queston[index];
     const option1Total = question[index].answer1Total;
     const option2Total = question[index].answer2Total;
     const option3Total = question[index].answer3Total;
     const option4Total = question[index].answer4Total;
 //HTML Elements
-    
+    questionEl.innerHTML = '${index + 1}. ${question.question}'
+    option1.setAttribute('data-total', '${option1Total}');
+    option2.setAttribute('data-total', '${option2Total}');
+    option3.setAttribute('data-total', '${option3Total}');
+    option4.setAttribute('data-total', '${option4Total}');
+
+    option1.innerHTML = '${question.answer1}'
+    option2.innerHTML = '${question.answer2}'
+    option3.innerHTML = '${question.answer3}'
+    option4.innerHTML = '${question.answer4}'
 }
+
+//Next Question
+function loadNextQuestion () {
+    const selectedOption = document.querySelector('input[type="radio"]:checked');
+    //Make sure an option is selected
+    if(!selectedOption) {
+        alert("Select an option or you'll never know which face you are and therefore will never know yourself");
+        return;
+    }
+    //Get value of selection
+    const answerScore = Number(selectedOption.nextElementSibling.getAttribute('data-total'));
+
+    //Add answer score to array
+    score.push(answerScore);
+    selectedAnswersData.push()
+
+    const totalScore = score.reduce((total, currentNum) => total + currentNum);
+    //Increment current question number to be used as the index for each array
+    currentQuestion++;
+    //Once finished clear checked
+    selectedOption.checked = false;
+    //When quiz is on final question
+    if(currentQuestion == totalQuestions - 1) {
+        nextButton.textContent = 'Finish';
+    }
+
+    //Once quiz is finished, hide container and show resutls *****ISSUE BELOW
+    if(currentQuestion == totalQuestions) {
+        container.style.display = 'none';
+        result.innerHTML = 
+            '<h1 class="final-score"> Your score: ${totalScore}</h1>
+            <div class="summary">
+                <h1>Summary</h1>
+                <p>Possible personality traits, see below for a summary based on your results:</p>
+                <p>15-20 - Turnle Neck</p>
+                <p>10-14 - Finger Guns</p>
+                <p>5-9 - Screaming</p>
+                <p>1-4 - Risky Business</p>
+            </div>
+            <button class="restart">Restart</button>
+            ';
+        return;
+    }
+    generateQuestions(currentQuestion);
+}
+
+//Function to load previous question
+function loadPreviousQuestion() {
+    currentQuestion--;
+    score.pop();
+    generateQuestions(currentQuestion);
+}
+
+//Function to reset and restart the quiz
+function restartQuiz(e) {
+    if(e.target.matches('button')) {
+        currentQuestion = 0;
+        score = [];
+        location.reload();
+    }
+}
+
+generateQuestions(currentQuestion);
+nextButton.addEventListener('click', loadNextQuestion);
+previousButton.addEventListener('click', loadPreviousQuestion);
+result.addEventListener('click', restartQuiz);
