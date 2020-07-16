@@ -3,7 +3,6 @@
 
 <head> 
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script type="text/javascript" src="js/scripts.js"></script>
     <title>Which Tom Cruise Are You?</title>
 </head>
 
@@ -19,8 +18,8 @@
 
         <!--QUIZ Q&A-->
      <div class="quiz-container">
-        <div id="question" class="question"></div>
-        <label class=:option">
+        <div id="question"></div>
+        <label class="option">
             <input type="radio" name="option" value="1"/>
             <span class="option1"></span>
         </label>
@@ -40,11 +39,13 @@
         <div class="controls">
             <button class="previous">Previous Question</button>
             <button class="next">Next Question</button>
+            <button class="restart">Restart Quiz</button>
         </div>
 
         <div class="results"></div>
     </div>
 </body>
 
+<script type="text/javascript" src="js/scripts.js"></script>
 </html>
 

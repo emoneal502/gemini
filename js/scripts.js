@@ -46,43 +46,45 @@ var question = [
         "answer4": "Amid the eternal return of the afterlife",
         "answer4Total": "4"
     }
-]
+];
 
 //Variables
 
-const currentQuestion = 0;
+let currentQuestion = 0;
 let score = [];
 let selectedAnswersData = [];
-const totalQuestions = question.length;
+let totalQuestions = question.length;
 
 const container = document.querySelector('.quiz-container');
-const questionEl = document.querySelector('.question');
+const questionEl = document.querySelector('#question');
 const option1 = document.querySelector('.option1');
 const option2 = document.querySelector('.option2');
 const option3 = document.querySelector('.option3');
 const option4 = document.querySelector('.option4');
-const nextButton = document.querySelector('.previous');
+const nextButton = document.querySelector('.next');
+const previousButton = document.querySelector('.previous');
 const restartButton = document.querySelector('.restart');
+const results = document.querySelector('.results');
 
 //Question Generator 
 function generateQuestions (index, questionArray) {
     //Selecting each question to pass it to a particular index
     const currentQuestion = questionArray[index];
-    const option1Total = currentQuestion[index].answer1Total;
-    const option2Total = currentQuestion[index].answer2Total;
-    const option3Total = currentQuestion[index].answer3Total;
-    const option4Total = currentQuestion[index].answer4Total;
+    const option1Total = currentQuestion.answer1Total;
+    const option2Total = currentQuestion.answer2Total;
+    const option3Total = currentQuestion.answer3Total;
+    const option4Total = currentQuestion.answer4Total;
 //HTML Elements
-    questionEl.innerHTML = '${index + 1}. ${question.question}'
-    option1.setAttribute('data-total', '${option1Total}');
-    option2.setAttribute('data-total', '${option2Total}');
-    option3.setAttribute('data-total', '${option3Total}');
-    option4.setAttribute('data-total', '${option4Total}');
+    questionEl.innerHTML = `${index + 1}. ${currentQuestion.question}`
+    option1.setAttribute('data-total', `${option1Total}`);
+    option2.setAttribute('data-total', `${option2Total}`);
+    option3.setAttribute('data-total', `${option3Total}`);
+    option4.setAttribute('data-total', `${option4Total}`);
 
-    option1.innerHTML = `${question.answer1}`
-    option2.innerHTML = `${question.answer2}`
-    option3.innerHTML = `${question.answer3}`
-    option4.innerHTML = `${question.answer4}`
+    option1.innerHTML = `${currentQuestion.answer1}`
+    option2.innerHTML = `${currentQuestion.answer2}`
+    option3.innerHTML = `${currentQuestion.answer3}`
+    option4.innerHTML = `${currentQuestion.answer4}`
 }
 
 //Next Question
@@ -137,6 +139,10 @@ function loadPreviousQuestion() {
     generateQuestions(currentQuestion);
 }
 
+function getResults() {
+
+}
+
 //Function to reset and restart the quiz
 function restartQuiz(e) {
     if(e.target.matches('button')) {
@@ -149,4 +155,5 @@ function restartQuiz(e) {
 generateQuestions(currentQuestion, question);
 nextButton.addEventListener('click', loadNextQuestion);
 previousButton.addEventListener('click', loadPreviousQuestion);
-result.addEventListener('click', restartQuiz);
+results.addEventListener('click', getResults);
+restartButton.addEventListener('click', restartQuiz);
