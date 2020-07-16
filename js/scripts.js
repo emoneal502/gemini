@@ -87,6 +87,8 @@ function generateQuestions (index, questionArray) {
     option4.innerHTML = `${currentQuestion.answer4}`
 }
 
+//Results Generator
+
 //Next Question
 function loadNextQuestion () {
     const selectedOption = document.querySelector('input[type="radio"]:checked');
@@ -114,18 +116,7 @@ function loadNextQuestion () {
 
     //Once quiz is finished, hide container and show resutls *****ISSUE BELOW
     if(currentQuestion == totalQuestions) {
-        container.style.display = 'none';
-        result.innerHTML = 
-            `<h1 class="final-score"> Your score: ${totalScore}</h1>
-            <div class="summary">
-                <h1>Summary</h1>
-                <p>Possible personality traits, see below for a summary based on your results:</p>
-                <p>15-20 - Turnle Neck</p>
-                <p>10-14 - Finger Guns</p>
-                <p>5-9 - Screaming</p>
-                <p>1-4 - Risky Business</p>
-            </div>
-            <button class="restart">Restart</button>`
+        getResults(totalScore);
         return;
     }
     console.log(question);
@@ -139,8 +130,28 @@ function loadPreviousQuestion() {
     generateQuestions(currentQuestion);
 }
 
-function getResults() {
-
+function getResults(totalScore) {
+    let imagePath = '';
+    if(totalScore <=100){
+        imagePath = 'img/demonic.jpg';
+    }
+    container.style.display = 'none';
+   /* results.innerHTML = 
+       `<h1 class="final-score"> Your score: ${totalScore}</h1>
+        <div class="summary">
+            <h1>Summary</h1>
+            <p>Possible personality traits, see below for a summary based on your results:</p>
+            <p>15-20 - Turnle Neck</p>
+            <p>10-14 - Finger Guns</p>
+            <p>5-9 - Screaming</p>
+            <p>1-4 - Risky Business</p>
+        </div>
+        <button class="restart">Restart</button>`
+        */
+        const header = document.createElement('h1')
+        const headerText = document.createTextNode(`Your Score Is ${totalScore}`)
+        header.appendChild(headerText)
+        document.appendChild(header)
 }
 
 //Function to reset and restart the quiz
