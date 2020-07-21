@@ -136,6 +136,7 @@ function getResults(totalScore) {
         imagePath = 'img/demonic.jpg';
     }
     container.style.display = 'none';
+
    /* results.innerHTML = 
        `<h1 class="final-score"> Your score: ${totalScore}</h1>
         <div class="summary">
@@ -148,10 +149,14 @@ function getResults(totalScore) {
         </div>
         <button class="restart">Restart</button>`
         */
+       const img = document.createElement('img')
+       img.src= imagePath;
         const header = document.createElement('h1')
         const headerText = document.createTextNode(`Your Score Is ${totalScore}`)
         header.appendChild(headerText)
-        document.appendChild(header)
+        results.appendChild(header)
+        results.appendChild(img)
+        header.classList.add('resultsHeader')
 }
 
 //Function to reset and restart the quiz

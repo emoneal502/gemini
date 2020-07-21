@@ -8,9 +8,11 @@
 
 <body>
     <!--Headers-->
-     <div class="header"> 
+     <div class="headbox"> 
         <img src="img/eyes1.jpg" alt="Toms Eyes" style="width:100%">
-        <h1>Which of Tom Cruise's Faces Are You?</h1>
+        <div class="header">
+            <h1>Which of Tom Cruise's Faces Are You?</h1>
+        </div>
     </div>  
     <div id="intro">
         <h2>Take this quiz to find out which of Tom Cruise's ridiculous facial expression best matches your personality!</h2>
@@ -27,23 +29,22 @@
             <input type="radio" name="option" value="2"/>
             <span class="option2"></span>
         </label>
-        <label class=:option">
+        <label class="option">
             <input type="radio" name="option" value="3"/>
             <span class="option3"></span>
         </label>
-        <label class=:option">
+        <label class="option">
             <input type="radio" name="option" value="4"/>
             <span class="option4"></span>
         </label>
 <!--BOTTOM BUTTONS-->
         <div class="controls">
             <button class="previous">Previous Question</button>
-            <button class="next">Next Question</button>
-            <button class="restart">Restart Quiz</button>
+            <button class="next">Next Question</button>  
         </div>
-
-        <div class="results"></div>
+        <button class="restart">Restart Quiz</button>
     </div>
+    <div class="results"></div>
 </body>
 
 <script type="text/javascript" src="js/scripts.js"></script>
